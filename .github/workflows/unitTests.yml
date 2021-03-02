@@ -1,0 +1,26 @@
+name: Unit-Tests
+
+# Run this workflow every time a new commit pushed to your repository
+on: push #pull_request
+
+jobs:
+  # Set the job key. The key is displayed as the job name
+  # when a job name is not provided
+  Unit-Tests:
+    # Name the Job
+    name: Launch unit tests
+    # Set the type of machine to run on
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks out a copy of your repository on the ubuntu-latest machine
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Runs the Super-Linter action
+      - name: Run Tests
+        run: |
+          sudo add-apt-repository ppa:snaipewastaken/ppa
+          sudo apt-get update -yq
+          sudo apt-get install criterion-dev -yq
+          make tests_run
