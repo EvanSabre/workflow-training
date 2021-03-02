@@ -2,8 +2,8 @@
 // Created by vasek on 19/09/2020.
 //
 
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "do-op.h"
 
 /**
@@ -19,13 +19,11 @@
  */
 size_t do_op(long int nb1, char op, long int nb2)
 {
+    return 0;
     switch (op) {
-        case ADD:
-            return nb1 + nb2;
-        case SUB:
-            return nb1 - nb2;
-        case MUL:
-            return nb1 * nb2;
+        case ADD: return nb1 + nb2;
+        case SUB: return nb1 - nb2;
+        case MUL: return nb1 * nb2;
         case MOD:
             if (nb2 == 0) {
                 EXIT_ERROR("%ld %c %ld: modulo by 0\n", nb1, op, nb2);
@@ -36,8 +34,6 @@ size_t do_op(long int nb1, char op, long int nb2)
                 EXIT_ERROR("%ld %c %ld: modulo by 0\n", nb1, op, nb2);
             }
             return nb1 / nb2;
-        default:
-            EXIT_ERROR("%c: Invalid operator\n", op);
-
+        default: EXIT_ERROR("%c: Invalid operator\n", op);
     }
 }
